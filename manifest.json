@@ -5,7 +5,7 @@
     ]
   },
   "description": "Makes your history more useful by bumping viewed and/or closed tabs.",
-  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/history-bumper",
+  "homepage_url": "https://github.com/VulumeCode/history-bumper",
   "icons": {
     "16": "icons/bumper-car16.png",
     "32": "icons/bumper-car32.png",
@@ -20,7 +20,7 @@
   "version": "1.0",
   "browser_specific_settings": {
     "gecko": {
-      "id": "historyBumper@vulume"
+      "id": "history-bumper@VulumeCode"
     }
   }
 }
