@@ -1,0 +1,33 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  height: 100vh;
+  padding: 1em;
+}
+
+
+input[type="checkbox"] {
+  vertical-align: middle;
+  margin-right: 1em;
+}
+
+
+label {
+  display: block;
+  margin: 0.5em;
+}
+
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #23222B;
+    color: #FBFBFE;
+  }
+}

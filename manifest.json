@@ -4,6 +4,10 @@
       "background.js"
     ]
   },
+  "options_ui": {
+    "page": "options.html",
+    "browser_style": true
+  },
   "description": "Makes your history more useful by bumping viewed and/or closed tabs.",
   "homepage_url": "https://github.com/VulumeCode/history-bumper",
   "icons": {
@@ -13,11 +17,12 @@
   },
   "permissions": [
     "history",
-    "tabs"
+    "tabs",
+    "storage"
   ],
   "manifest_version": 2,
   "name": "History bumper",
-  "version": "1.0",
+  "version": "1.1",
   "browser_specific_settings": {
     "gecko": {
       "id": "history-bumper@VulumeCode"
