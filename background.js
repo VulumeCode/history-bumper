@@ -7,28 +7,6 @@ var defaultSettings = {
   onWindowClosed: false,
 };
 
-/*
-Generic error logger.
-*/
-function onError(e) {
-  console.error(e);
-}
-
-/*
-On startup, check whether we have stored settings.
-If we don't, then store the default settings.
-*/
-async function checkStoredSettings() {
-  const storedSettings = await browser.storage.sync.get()
-  console.log('checkStoredSettings', storedSettings)
-  if (!storedSettings) {
-    browser.storage.sync.set(defaultSettings);
-  } else {
-    cacheStoredSettings(storedSettings)
-  }
-
-
-}
 
 var settingsCache = defaultSettings;
 
@@ -36,9 +14,25 @@ function cacheStoredSettings(storedSettings) {
   settingsCache = storedSettings
 }
 
+
+/*
+On startup, check whether we have stored settings.
+If we don't, then store the default settings.
+*/
+async function checkStoredSettings() {
+  const storedSettings = await browser.storage.local.get()
+  console.log('checkStoredSettings', storedSettings)
+  if (!Object.keys(storedSettings).length) {
+    browser.storage.local.set(defaultSettings);
+  } else {
+    cacheStoredSettings(storedSettings)
+  }
+}
+
 checkStoredSettings()
 browser.storage.onChanged.addListener(async (_changes, area) => {
-  if (area === "sync") {
+  console.log('onChanged', _changes)
+  if (area === "local") {
     checkStoredSettings()
   }
 })

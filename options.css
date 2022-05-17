@@ -3,19 +3,21 @@ body {
   font-size: 14px;
   font-weight: 400;
   height: 100vh;
-  padding: 1em;
+  padding-top: 1em;
 }
 
 
 input[type="checkbox"] {
-  vertical-align: middle;
-  margin-right: 1em;
+  margin-right: 0.5em;
+  vertical-align: bottom;
 }
 
 
-label {
+label,
+button {
   display: block;
-  margin: 0.5em;
+  margin: 1em;
+  margin-left: 1.5em;
 }
 
 
