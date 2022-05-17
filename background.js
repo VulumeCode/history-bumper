@@ -4,6 +4,7 @@ Default settings. If there is nothing in storage, use these values.
 var defaultSettings = {
   onActivated: true,
   onClosed: true,
+  onWindowClosed: false,
 };
 
 /*
@@ -72,6 +73,7 @@ browser.tabs.onActivated.addListener(async (activeInfo) => {
   }
 }
 );
+
 browser.windows.onFocusChanged.addListener(async (windowId) => {
   if (settingsCache.onActivated) {
 
@@ -85,14 +87,12 @@ browser.windows.onFocusChanged.addListener(async (windowId) => {
   }
 });
 
-
 browser.tabs.onRemoved.addListener((tabId, removeInfo) => {
-
   if (settingsCache.onClosed) {
-
-
-    const removedTab = allTabs.find(t => t.id == tabId);
-    console.log("onRemoved", removedTab.title, removeInfo)
-    bump(removedTab.url)
+    if (!removeInfo.isWindowClosing || settingsCache.onWindowClosed) {
+      const removedTab = allTabs.find(t => t.id == tabId);
+      console.log("onRemoved", removedTab.title, removeInfo)
+      bump(removedTab.url)
+    }
   }
 })
