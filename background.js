@@ -18,7 +18,8 @@ function onError(e) {
 On startup, check whether we have stored settings.
 If we don't, then store the default settings.
 */
-function checkStoredSettings(storedSettings) {
+async function checkStoredSettings() {
+  const storedSettings = await browser.storage.sync.get()
   console.log('checkStoredSettings', storedSettings)
   if (!storedSettings) {
     browser.storage.sync.set(defaultSettings);
@@ -35,14 +36,12 @@ function cacheStoredSettings(storedSettings) {
   settingsCache = storedSettings
 }
 
+checkStoredSettings()
 browser.storage.onChanged.addListener(async (_changes, area) => {
   if (area === "sync") {
-    checkStoredSettings(await browser.storage.sync.get())
+    checkStoredSettings()
   }
 })
-
-const gettingStoredSettings = browser.storage.sync.get();
-gettingStoredSettings.then(checkStoredSettings, onError);
 
 
 
