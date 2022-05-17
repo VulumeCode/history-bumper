@@ -69,7 +69,6 @@ browser.tabs.onActivated.addListener(async (activeInfo) => {
 
 browser.windows.onFocusChanged.addListener(async (windowId) => {
   if (settingsCache.onActivated) {
-
     console.log("Newly focused window: ", windowId);
     const win = await browser.windows.get(windowId);
 
