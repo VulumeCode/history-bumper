@@ -27,5 +27,6 @@
     "gecko": {
       "id": "history-bumper@VulumeCode"
     }
-  }
+  },
+  "incognito": "not_allowed"
 }
